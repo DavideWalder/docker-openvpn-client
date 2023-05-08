@@ -13,11 +13,11 @@ ENV KILL_SWITCH=on \
     SOCKS_PROXY=off
 
 RUN apk add --no-cache \
-        bash \
-        bind-tools \
-        dante-server \
-        openvpn \
-        tinyproxy
+    bash \
+    bind-tools \
+    dante-server \
+    openvpn \
+    tinyproxy
 
 RUN mkdir -p /data/vpn
 
