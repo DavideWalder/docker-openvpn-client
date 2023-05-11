@@ -1,4 +1,37 @@
 # OpenVPN Client for Docker
+## Run with docker-compose
+
+Place the following files in the `local` folder to run this container locally using docker-compose.
+
+```
+/local
+   config.ovpn
+   credentials.txt
+```
+
+The `credentials.txt` file holds the credentials for the VPN access.
+
+```
+# credentials.txt
+username
+password
+```
+
+Update the line with `auth-user-pass` in the `config.ovpn` to use the correct credentials.
+
+```
+# config.ovpn
+...
+auth-user-pass credentials.txt
+...
+```
+
+Start the container with:
+
+```
+docker compose up
+```
+
 ## What is this and what does it do?
 [`ghcr.io/wfg/openvpn-client`](https://github.com/users/wfg/packages/container/package/openvpn-client) is a containerized OpenVPN client.
 It has a kill switch built with `iptables` that kills Internet connectivity to the container if the VPN tunnel goes down for any reason.
