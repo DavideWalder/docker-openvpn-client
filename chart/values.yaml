@@ -38,6 +38,24 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
+probes:
+  probeURL: "https://ifconfig.me"
+  useHttpsInProbeURL: true
+  readinessProbe:
+    failureThreshold: 1
+    timeoutSeconds: 5
+    periodSeconds: 10
+
+  livenessProbe:
+    failureThreshold: 1
+    timeoutSeconds: 5
+    periodSeconds: 10
+
+  startupProbe:
+    failureThreshold: 10
+    timeoutSeconds: 5
+    periodSeconds: 5
+
 nodeSelector: {}
 
 tolerations: []

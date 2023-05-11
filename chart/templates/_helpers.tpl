@@ -74,3 +74,23 @@ Define config secret name
 {{- define "openvpn-client.configSecretName" -}}
     {{- include "openvpn-client.fullname" . | printf "%s-config" }}
 {{- end -}}
+
+{{/*
+Define probe
+*/}}
+{{- define "openvpn-client.probe" -}}
+failureThreshold: {{ .failureThreshold }}
+periodSeconds: {{ .periodSeconds }}
+timeoutSeconds: {{ .timeoutSeconds }}
+{{- end -}}
+
+{{/*
+Define probe command
+*/}}
+{{- define "openvpn-client.probeCommand" -}}
+exec:
+  command:
+    - bash
+    - -c
+    - 'healthcheck.sh --probeURL={{ .Values.probes.probeURL }} --proxyIP={{ .Values.listenOn }} --httpProxy={{- .Values.httpProxy.enabled }} --socksProxy={{- .Values.socksProxy.enabled }} --useHttps={{- .Values.probes.useHttpsInProbeURL }}'
+{{- end -}}

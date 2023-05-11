@@ -32,6 +32,17 @@ A Helm chart for an OpenVPN client with HTTP and SOCKS5 proxies
 | pdb.create | bool | `false` |  |
 | pdb.minAvailable | int | `1` |  |
 | podAnnotations | object | `{}` |  |
+| probes.livenessProbe.failureThreshold | int | `1` |  |
+| probes.livenessProbe.periodSeconds | int | `10` |  |
+| probes.livenessProbe.timeoutSeconds | int | `5` |  |
+| probes.probeURL | string | `"https://ifconfig.me"` |  |
+| probes.readinessProbe.failureThreshold | int | `1` |  |
+| probes.readinessProbe.periodSeconds | int | `10` |  |
+| probes.readinessProbe.timeoutSeconds | int | `5` |  |
+| probes.startupProbe.failureThreshold | int | `10` |  |
+| probes.startupProbe.periodSeconds | int | `5` |  |
+| probes.startupProbe.timeoutSeconds | int | `5` |  |
+| probes.useHttpsInProbeURL | bool | `true` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |
 | service.type | string | `"ClusterIP"` |  |

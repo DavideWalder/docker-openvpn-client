@@ -45,9 +45,12 @@ spec:
             {{- if .Values.httpProxy.enabled }}
             - containerPort: 8080
             {{- end }}
-          readinessProbe:
-            exec:
-              command: ["ping", "-c", "3", "1.1.1.1"]
+          readinessProbe: {{- include "openvpn-client.probe" .Values.probes.readinessProbe | nindent 12 }}
+            {{- include "openvpn-client.probeCommand" . | nindent 12 }}
+          livenessProbe: {{- include "openvpn-client.probe" .Values.probes.livenessProbe | nindent 12 }}
+            {{- include "openvpn-client.probeCommand" . | nindent 12 }}
+          startupProbe: {{- include "openvpn-client.probe" .Values.probes.startupProbe | nindent 12 }}
+            {{- include "openvpn-client.probeCommand" . | nindent 12 }}
           env:
             - name: VPN_LOG_LEVEL
               value: {{ .Values.vpnLogLevel | quote }}
