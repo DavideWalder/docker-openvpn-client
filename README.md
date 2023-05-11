@@ -1,4 +1,11 @@
 # OpenVPN Client for Docker
+
+# Generate Helm chart
+
+```
+helm template openvpn-client ../docker-openvpn-client/chart --values path/to/values.yaml > path/to/output/file/openvpn-client.yaml --debug
+```
+
 ## Run with docker-compose
 
 Place the following files in the `local` folder to run this container locally using docker-compose.
