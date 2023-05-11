@@ -3,8 +3,7 @@
 
 services:
   vpn:
-    image: ghcr.io/wfg/openvpn-client
-    # build: .
+    build: .
     container_name: openvpn-client
     cap_add: 
       - NET_ADMIN
@@ -14,19 +13,21 @@ services:
       # - SUBNETS=192.168.10.0/24
       - HTTP_PROXY=on
       - SOCKS_PROXY=on
+      # - KILL_SWITCH=off
+      # - LISTEN_ON=0.0.0.0
       # - PROXY_USERNAME_SECRET=username # <-- If used, these must match the name of a
       # - PROXY_PASSWORD_SECRET=password # <-- secret (NOT the file used by the secret)
-    # volumes: 
-    #   - ~/local/vpn:/data/vpn
+      - VPN_CONFIG_FILE=open-vpn-config.ovpn
+      - VPN_AUTH_SECRET=vpn_auth_secret
+    volumes: 
+      - ./local:/data/vpn
     ports:
       - 1080:1080
       - 8088:8080
-    # secrets:
-    #   - username
-    #   - password
+    secrets:
+      - vpn_auth_secret
 
-# secrets:
-#   username:
-#     file: ~/local/secrets/username
-#   password:
-#     file: ~/local/secrets/password
+secrets:
+  vpn_auth_secret:
+    file: ./local/credentials.txt
+

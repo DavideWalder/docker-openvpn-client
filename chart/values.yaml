@@ -27,12 +27,34 @@ resources:
   #   cpu: 10m
   #   memory: 64Mi
 
+pdb:
+  create: false
+  minAvailable: 1
+
 autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
+
+probes:
+  probeURL: "https://ifconfig.me"
+  useHttpsInProbeURL: true
+  readinessProbe:
+    failureThreshold: 1
+    timeoutSeconds: 5
+    periodSeconds: 10
+
+  livenessProbe:
+    failureThreshold: 1
+    timeoutSeconds: 5
+    periodSeconds: 10
+
+  startupProbe:
+    failureThreshold: 10
+    timeoutSeconds: 5
+    periodSeconds: 5
 
 nodeSelector: {}
 

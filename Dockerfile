@@ -13,15 +13,18 @@ ENV KILL_SWITCH=on \
     SOCKS_PROXY=off
 
 RUN apk add --no-cache \
-        bash \
-        bind-tools \
-        dante-server \
-        openvpn \
-        tinyproxy
+    bash \
+    bind-tools \
+    dante-server \
+    openvpn \
+    tinyproxy \
+    curl 
 
 RUN mkdir -p /data/vpn
 
 COPY data/ /data
+
+COPY data/scripts/healthcheck.sh /usr/bin
 
 HEALTHCHECK CMD ping -c 3 1.1.1.1 || exit 1
 
