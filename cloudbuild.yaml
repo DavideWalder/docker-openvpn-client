@@ -1,0 +1,7 @@
+steps: 
+  - name: "gcr.io/kaniko-project/executor:latest"
+    args:
+      - --destination=us-central1-docker.pkg.dev/$PROJECT_ID/us-central1-docker/docker-openvpn-client:$SHORT_SHA
+      - --destination=europe-west6-docker.pkg.dev/$PROJECT_ID/europe-west6-docker/docker-openvpn-client:$SHORT_SHA
+      - --cache=true
+      - --cache-ttl=96h
