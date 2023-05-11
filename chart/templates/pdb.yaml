@@ -1,0 +1,13 @@
+{{- if .Values.pdb.create }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ include "openvpn-client.fullname" . }}
+  labels:
+    {{- include "openvpn-client.labels" . | nindent 4 }}
+spec:
+  minAvailable: {{ .Values.pdb.minAvailable }}
+  selector:
+    matchLabels:
+      {{- include "openvpn-client.selectorLabels" . | nindent 6 }}
+{{- end }}

@@ -29,6 +29,8 @@ A Helm chart for an OpenVPN client with HTTP and SOCKS5 proxies
 | listenOn | string | `""` | Address the proxies will be listening on. Set to `0.0.0.0` to allow all IP addresses. |
 | nameOverride | string | `""` |  |
 | nodeSelector | object | `{}` |  |
+| pdb.create | bool | `false` |  |
+| pdb.minAvailable | int | `1` |  |
 | podAnnotations | object | `{}` |  |
 | replicaCount | int | `1` |  |
 | resources | object | `{}` |  |

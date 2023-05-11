@@ -27,6 +27,10 @@ resources:
   #   cpu: 10m
   #   memory: 64Mi
 
+pdb:
+  create: false
+  minAvailable: 1
+
 autoscaling:
   enabled: false
   minReplicas: 1
