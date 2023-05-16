@@ -97,14 +97,3 @@ killSwitch:
 keepDNSUnchanged:
   # -- Keep existing DNS configuration
   enabled: false
-
-configFiles:
-  # -- The OpenVPN config file to use. If this is unset, the first file with the extension `.conf` will be used.
-  openVPNConfig: ""
-  # -- OpenVPN config files
-  files:
-    {}
-    # example.conf: |-
-    #   # Your OpenVPN configuration file
-    #   Line 1
-    #   Line 2

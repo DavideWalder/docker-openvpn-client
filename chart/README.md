@@ -17,8 +17,6 @@ A Helm chart for an OpenVPN client with HTTP and SOCKS5 proxies
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
-| configFiles.files | object | `{}` | OpenVPN config files |
-| configFiles.openVPNConfig | string | `""` | The OpenVPN config file to use. If this is unset, the first file with the extension `.conf` will be used. |
 | fullnameOverride | string | `""` |  |
 | httpProxy.enabled | bool | `false` | The on/off status of Tinyproxy, the built-in HTTP proxy server. |
 | image.pullPolicy | string | `"IfNotPresent"` |  |
